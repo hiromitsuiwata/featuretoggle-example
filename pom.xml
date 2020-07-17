@@ -1,0 +1,67 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.github.hiromitsu7</groupId>
+  <artifactId>myapp</artifactId>
+  <version>1.0</version>
+  <packaging>war</packaging>
+
+  <properties>
+    <java.version>8</java.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>jakarta.platform</groupId>
+      <artifactId>jakarta.jakartaee-api</artifactId>
+      <version>8.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.7.30</version>
+    </dependency>
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>1.2.3</version>
+    </dependency>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.12</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.microprofile.health</groupId>
+      <artifactId>microprofile-health-api</artifactId>
+      <version>2.2</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.0</version>
+        <configuration>
+          <source>${java.version}</source>
+          <target>${java.version}</target>
+          <release>${java.version}</release>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.2.2</version>
+        <configuration>
+          <failOnMissingWebXml>true</failOnMissingWebXml>
+          <webXml>src/main/webapp/WEB-INF/web.xml</webXml>
+          <warSourceDirectory>src/main/webapp</warSourceDirectory>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
