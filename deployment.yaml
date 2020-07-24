@@ -11,6 +11,7 @@ spec:
     metadata:
       labels:
         app: myapp
+        mylabel: bar
     spec:
       containers:
         - name: myapp
@@ -26,6 +27,24 @@ spec:
             initialDelaySeconds: 60
             periodSeconds: 10
             failureThreshold: 3
+          resources:
+            requests:
+              memory: "32Mi"
+              cpu: "125m"
+          volumeMounts:
+            - name: podinfo
+              mountPath: /etc/podinfo
+      volumes:
+        - name: podinfo
+          downwardAPI:
+            items:
+              - path: "labels"
+                fieldRef:
+                  fieldPath: metadata.labels
+                mode: 0666
+              - path: "annotations"
+                fieldRef:
+                  fieldPath: metadata.annotations
 ---
 apiVersion: v1
 kind: Service

@@ -19,6 +19,8 @@ buildNumber.properties
 .project
 .settings/
 
+.idea/
+
 node_modules/
 package-lock.json
 
